@@ -1,0 +1,7 @@
+h1. Install
+- Put the contents of core/components/AlohaX/elements/snippets/alohax.snippet.php into a new snippet and name it AlohaX
+- Put a snippet call into your template somewhere, make sure it is uncached so that your manager users are the only ones that see any of this AlohaX stuff.
+- Pass a list of fields, comma separated in the &fields variable. Try pagetitle and content to get started. '*' will work but won't play nice yet...
+- Wrap your editable fields inside an HTML element with the exact same name as the field you want to make editable. e.g.:
+- Load the page, hover the element and click into it to begin editing. For quicker editing see 'saveOnBlur' option here.
+- Report issues on github, or fork it if you are 1337.

@@ -66,7 +66,7 @@ function saveEditableOnBlurForLater(event, eventProperties){
 $(document).ready(function(){
 	$(document).alohaStatus({
 		message			 : 'AlohaX is ready - start editing this page!',
-		waitUntilClose   : true
+		time   : 1500
 	});
 	
 	for(var x = 0; x < alohaXSettings.fields.length; x++){
