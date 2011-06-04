@@ -1,4 +1,8 @@
 *
 !.gitignore
+!assets/
+!assets/components/
 !assets/components/AlohaX/
+!core/
+!core/components/
 !core/components/AlohaX/
