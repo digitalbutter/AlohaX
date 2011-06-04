@@ -1,1 +1,0 @@
-Ext.onReady(function(){MODx.load({xtype:"modx-page-system-event"});});MODx.page.SystemEvent=function(A){A=A||{};Ext.applyIf(A,{components:[{xtype:"modx-panel-error-log",renderTo:"modx-panel-error-log-div"}]});MODx.page.SystemEvent.superclass.constructor.call(this,A);};Ext.extend(MODx.page.SystemEvent,MODx.Component);Ext.reg("modx-page-system-event",MODx.page.SystemEvent);

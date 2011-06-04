@@ -1,1 +1,0 @@
-MODx.tree.SimpleResource=function(A){A=A||{};Ext.applyIf(A,{root_id:"0",root_name:_("resources"),enableDrag:true,enableDrop:true,baseParams:{action:"getNodes",nohref:true}});MODx.tree.SimpleResource.superclass.constructor.call(this,A);};Ext.extend(MODx.tree.SimpleResource,MODx.tree.Tree);Ext.reg("modx-tree-resource-simple",MODx.tree.SimpleResource);

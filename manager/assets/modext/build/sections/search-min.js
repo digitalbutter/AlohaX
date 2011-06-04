@@ -1,1 +1,0 @@
-Ext.onReady(function(){MODx.load({xtype:"modx-page-search"});});MODx.page.Search=function(A){A=A||{};Ext.applyIf(A,{components:[{xtype:"modx-panel-search",renderTo:"modx-panel-search-div"}]});MODx.page.Search.superclass.constructor.call(this,A);};Ext.extend(MODx.page.Search,MODx.Component);Ext.reg("modx-page-search",MODx.page.Search);
