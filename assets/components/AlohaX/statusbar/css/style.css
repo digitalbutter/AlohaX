@@ -1,0 +1,70 @@
+#alohaXForm {
+	display: none;
+}
+
+.alohaStatus-container {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	display: none;
+	-webkit-box-shadow: 0px 1px 10px ;
+	-moz-box-shadow: 0px 1px 10px ;
+	box-shadow: 0px 1px 10px ; 
+}
+
+.alohaStatus{
+	height:50px;
+	margin-left: auto;
+	margin-right: auto;
+	width:100%;
+	background-color: #FFFFFF;
+	position:relative;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=95);
+	opacity: 0.95;
+	-moz-opacity: 0.95;
+	text-align:center;
+	z-index:9999999;
+	padding:0px;
+}
+
+.alohaStatus-top{
+	top:0px;
+	border-top:2px solid #fff;
+	border-bottom: 1px solid #ebebeb;
+}
+.alohaStatus-bottom{
+	bottom:0px;
+	border-bottom:2px solid #fff;
+	border-top: 1px solid #ebebeb;
+	color:#777;
+}
+.alohaStatus-content{
+	line-height:46px;
+	font-size: 18px;
+	font-family:'Lucida Grande',sans-serif;
+}
+a.alohaStatus-cross{
+	position:absolute;
+	width:31px;
+	height:31px;
+	background:transparent url(../images/cross.png) no-repeat top left;	
+	cursor:pointer;
+	right:10px;
+}
+a.alohaStatus-cross:hover{
+	background-image: url(../images/cross_hover.png)
+}
+.alohaStatus-top a.alohaStatus-cross{
+	top:8px;	
+}
+.alohaStatus-bottom a.alohaStatus-cross{
+	bottom:8px;
+}
+
+.alohaStatus-success {
+	color: green;
+}
+
+.alohaStatus-error {
+	color: red;
+}
