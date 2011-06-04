@@ -17,23 +17,38 @@ if(!$modx->getAuthenticatedUser('mgr')){
 
 //get options
 $assetsPath = $modx->getOption('assetsPath', $scriptProperties, 'assets/components/AlohaX/');
-$saveOnBlur = $modx->getOption('saveOnBlur', $scriptProperties, 0);
-$fields = $modx->getOption('editableFields', $scriptProperties, '*');
+$saveOnBlur = (int)$modx->getOption('saveOnBlur', $scriptProperties, 0);
+$fields = $modx->getOption('fields', $scriptProperties, '*');
+$generateLinkList = $modx->getOption('generateLinkList', $scriptProperties, 1);//this is not very scaleable...
 
 //load this up so we can use it on the front end for storage.
 $resource = $modx->getObject('modResource', $modx->resourceIdentifier);
+$tvs = $resource->getMany('TemplateVars');
+$tvValues = array();
+foreach($tvs as $tvId => $tv){
+	$tvValues[$tv->get('name')] = $tv->getValue($resource->get('id'));
+}
 
-$dirtyFields = $resource->toArray();
+$resourceGraph = array_merge($tvValues, $resource->toArray());
+
+$dirtyFields = $resourceGraph;
 foreach($dirtyFields as $fieldName => $val){
 	$dirtyFields[$fieldName] = 0;
 }
 
 if($fields == '*'){
 	//get resource fields
-	$fields = $resource->toArray();
+	$fields = $resourceGraph;
 	$fields = array_keys($fields);
 } else {
 	$fields = explode(',', $fields);
+}
+
+$resourceJSON = array();
+foreach($fields as $field){
+	$resourceJSON = array(
+		$field => $resourceGraph[$field]
+	);
 }
 
 $statusBarAssets = array(
@@ -48,7 +63,6 @@ $alohaAssets = array(
 	,'plugins/com.gentics.aloha.plugins.List/plugin.js'
 	,'plugins/com.gentics.aloha.plugins.Link/plugin.js'
 	,'plugins/com.gentics.aloha.plugins.HighlightEditables/plugin.js'
-	,'plugins/com.gentics.aloha.plugins.TOC/plugin.js'
 	,'plugins/com.gentics.aloha.plugins.Link/LinkList.js'
 	,'plugins/com.gentics.aloha.plugins.Paste/plugin.js'
 	,'plugins/com.gentics.aloha.plugins.Paste/wordpastehandler.js'
@@ -66,7 +80,7 @@ $vars = array(
 	,'saveOnBlur' => $saveOnBlur
 	,'resourceIdentifier' => $modx->resourceIdentifier
 	,'fields' => $fields
-	,'resource' => $resource->toArray()
+	,'resource' => $resourceJSON
 	,'dirtyFields' => $dirtyFields
 );
 
@@ -92,5 +106,22 @@ foreach($statusBarAssets as $script){
 	
 }
 
+if($generateLinkList){
+	$links = array();
+	$allResources = $modx->getCollection('modResource', array('published' => 1, 'deleted' => 0));
+	foreach($allResources as $resourceId => $resource){
+		$links[] = array(
+			'name' => strip_tags($resource->get('pagetitle'))
+			,'url' => $modx->makeURL($resource->get('id'), '', '', 'full')
+			,'type' => 'modx-link'
+		);
+	}
+	$links = $modx->toJSON($links);
+	$modx->regClientStartupHTMLBlock(
+	'<script type="text/javascript">
+		GENTICS.Aloha.Repositories.LinkList.settings.data = ' . $links . ';
+	</script>'
+)	;
+}
 
 

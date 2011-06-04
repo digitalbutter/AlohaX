@@ -19,10 +19,9 @@ function saveEditableOnBlur(event, eventProperties) {
 }
 
 function saveResource(){
-	var resource = $("#alohaXForm").serializeObject();
 	$.post(alohaXSettings.assetsPath + 'connector.php', {
 		id: alohaXSettings.resourceIdentifier
-		,resource: resource
+		,resource: alohaXSettings.resource
 		,HTTP_MODAUTH: alohaXSettings.HTTP_MODAUTH
 		,action: 'web/saveresource'
 	}, function(response){
@@ -55,8 +54,7 @@ function saveEditableOnBlurForLater(event, eventProperties){
 	}
 	
 	//push the content into the resource object.
-	//alohaXSettings.resource[field] = eventProperties.editable.getContents();
-	$("#alohaX_" + field + "").val(eventProperties.editable.getContents());
+	alohaXSettings.resource[field] = eventProperties.editable.getContents();
 	$(document).alohaStatus({
 		message: "You have " + alohaXSettings.dirtyFieldCount + " unsaved changes. <a href='javascript:saveResource();'>Click here</a> to save."
 		,waitUntilClose: true
@@ -71,10 +69,6 @@ $(document).ready(function(){
 		waitUntilClose   : true
 	});
 	
-	if(alohaXSettings.saveOnBlur == 0){
-		$('body').append('<form id="alohaXForm"></div>');
-	}
-	
 	for(var x = 0; x < alohaXSettings.fields.length; x++){
 		fieldname = alohaXSettings.fields[x];
 		if(jQuery.trim($("#" + fieldname).html()) == ''){
@@ -83,11 +77,7 @@ $(document).ready(function(){
 		}
 		if($("#" + fieldname).length){
 			$("#" + fieldname).aloha();
-			if(alohaXSettings.saveOnBlur == 0){
-				$("#alohaXForm").append(
-					"<input type='hidden' value='" + alohaXSettings.resource[fieldname] + "' name='" + fieldname + "' id='alohaX_" + fieldname + "' />"
-				);
-			}
+			
 		}
 		
 	}
@@ -131,13 +121,15 @@ GENTICS.Aloha.settings = {
 		 	// all elements with no specific configuration may insert links
 			config : [ 'a' ],
 		  	// use all resources of type website for autosuggest
-		  	objectTypeFilter: ['website'],
+		  	objectTypeFilter: ['modx-link'],
 		  	// handle change of href
 		  	onHrefChange: function( obj, href, item ) {
 			  	if ( item ) {
 					jQuery(obj).attr('data-name', item.name);
+					jQuery(obj).attr('style', '');//aloha adds stuff by default
 			  	} else {
 					jQuery(obj).removeAttr('data-name');
+					jQuery(obj).attr('style', '');//aloha adds stuff by default
 			  	}
 		  	}
 		}
