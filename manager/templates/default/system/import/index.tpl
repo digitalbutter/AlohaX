@@ -1,0 +1,1 @@
+<div id="modx-import-resources-div"></div>

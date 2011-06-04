@@ -1,0 +1,1 @@
+<div id="modx-panel-profile-div"></div>

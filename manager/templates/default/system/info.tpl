@@ -1,0 +1,1 @@
+<div id="modx-panel-system-info-div"></div>
