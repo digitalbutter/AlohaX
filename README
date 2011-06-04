@@ -1,5 +1,5 @@
 h1. Install
-- Fetch a package, or run the build script on your own installation and install the package through the package manager.
+- Fetch a package from the big Downloads button to the top right, or run the build script on your own installation and install the package through the package manager.
 - Put a snippet call into your template somewhere, make sure it is uncached so that your manager users are the only ones that see any of this AlohaX stuff.
 - Pass a list of fields, comma separated in the &fields variable. Try pagetitle and content to get started. '*' will work but won't play nice yet...
 - Wrap your editable fields inside an HTML element with the exact same name as the field you want to make editable. e.g.:
@@ -10,3 +10,5 @@ h1. TODO:
 - Listen to feedback, fix bugs
 - Make into a package for n00b install
 - Add english lexicon to the image plugin
+
+AholaX is licensed under the GPL v2 (or later) license. The entire license can be found in core/components/AholaX/docs/license.txt.
