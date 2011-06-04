@@ -6,4 +6,6 @@ if($resource = $modx->getObject('modResource', $scriptProperties['id'])){
 	return $modx->error->success();
 }
 
+$modx->cacheManager->clearCache();
+
 return $modx->error->failure();
