@@ -16,7 +16,7 @@ if(!$modx->getAuthenticatedUser('mgr')){
 //#End Auth
 
 //get options
-$assetsPath = $modx->getOption('alohax.assets_path',null,$modx->getOption('basePath', $scriptProperties, 'assets/components/AlohaX/'));
+$assetsPath = $modx->getOption('alohax.assets_path',null,$modx->getOption('assetsPath', $scriptProperties, 'assets/components/AlohaX/'));
 $saveOnBlur = (int)$modx->getOption('saveOnBlur', $scriptProperties, 0);
 $fields = $modx->getOption('fields', $scriptProperties, 'pagetitle,longtitle,menutitle,introtext,content');
 $generateLinkList = $modx->getOption('generateLinkList', $scriptProperties, 1);//this is not very scaleable...
@@ -66,10 +66,10 @@ $alohaAssets = array(
 	,'plugins/com.gentics.aloha.plugins.Link/LinkList.js'
 	,'plugins/com.gentics.aloha.plugins.Paste/plugin.js'
 	,'plugins/com.gentics.aloha.plugins.Paste/wordpastehandler.js'
-	,'plugins/image.js'
+	,'plugins/at.tapo.aloha.plugins.Image/plugin.js'
 	,'alohax.js'
 );
-//image.js is not properly translated
+//plugin.js is not properly translated
 
 $siteId = $_SESSION["modx.mgr.user.token"];
 //used to be $modx->siteId?

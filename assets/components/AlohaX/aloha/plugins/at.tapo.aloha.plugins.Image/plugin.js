@@ -150,7 +150,7 @@ var TAPO = function(){
                     //alert("testing " + files[i].name);
                     var reader = new FileReader();
                     reader.onloadend = function(readEvent) {
-                        var img = jQuery('<img src="" alt="xyz" />');
+                        var img = jQuery('<img src="../" alt="xyz" />');
                         img.attr('src', readEvent.target.result);
                         //GENTICS.Aloha.Selection.changeMarkupOnSelection(img);
                         GENTICS.Utils.Dom.insertIntoDOM(
