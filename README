@@ -5,3 +5,8 @@ h1. Install
 - Wrap your editable fields inside an HTML element with the exact same name as the field you want to make editable. e.g.:
 - Load the page, hover the element and click into it to begin editing. For quicker editing see 'saveOnBlur' option here.
 - Report issues on github, or fork it if you are 1337.
+
+h1. TODO:
+- Listen to feedback, fix bugs
+- Make into a package for n00b install
+- Add english lexicon to the image plugin
