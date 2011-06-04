@@ -16,7 +16,7 @@ if(!$modx->getAuthenticatedUser('mgr')){
 //#End Auth
 
 //get options
-$assetsPath = $modx->getOption('assetsPath', $scriptProperties, 'assets/components/AlohaX/');
+$assetsPath = $modx->getOption('alohax.assets_path',null,$modx->getOption('basePath', $scriptProperties, 'assets/components/AlohaX/'));
 $saveOnBlur = (int)$modx->getOption('saveOnBlur', $scriptProperties, 0);
 $fields = $modx->getOption('fields', $scriptProperties, 'pagetitle,longtitle,menutitle,introtext,content');
 $generateLinkList = $modx->getOption('generateLinkList', $scriptProperties, 1);//this is not very scaleable...
