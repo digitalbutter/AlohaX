@@ -17,7 +17,7 @@ set_time_limit(0);
 /* define package */
 define('PKG_NAME','AlohaX');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
-define('PKG_VERSION','0.1.0');
+define('PKG_VERSION','0.1.1');
 define('PKG_RELEASE','rc1');
 
 $root = dirname(dirname(__FILE__)).'/';
